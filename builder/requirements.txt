@@ -6,3 +6,6 @@
 # To learn more, see https://pip.pypa.io/en/stable/reference/requirements-file-format/
 
 runpod==1.6.0
+llmlingua==0.1.5
+accelerate==0.25.0
+transformers==4.39.1

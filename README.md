@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>Template | Worker</h1>
+<h1>LLMLingua Prompt Compression | RunPod</h1>
 
 [![CI | Test Handler](https://github.com/runpod-workers/worker-template/actions/workflows/CI-test_handler.yml/badge.svg)](https://github.com/runpod-workers/worker-template/actions/workflows/CI-test_handler.yml)
 &nbsp;
