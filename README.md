@@ -13,6 +13,8 @@
 4. Checkout the test notebook for an example of sending a request for compressing context.
 5. Send your compressed query to your LLM!
 
+6. Alternatively deploy using my template here [TEMPLATE](https://www.runpod.io/console/user/templates)
+
 - `DOCKERHUB` | [DOCKERHUB](https://hub.docker.com/repositories/jlonge4)
 
 
