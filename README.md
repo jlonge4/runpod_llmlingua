@@ -44,7 +44,6 @@
     "ratio": "2.8x",
     "saving": "Saving $0.1 in GPT-4."
 }
-
 ```
 
 ## 🔗 | Links
