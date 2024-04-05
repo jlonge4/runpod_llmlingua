@@ -21,7 +21,7 @@
 ```json
 {
     "input": {
-        "context": f"{context}",
+        "context": "[context]",
         "instruction": "You are a q/a bot who uses the provided context to answer a question",
         "question": "What's the purpose of the tutorial?",
         "target_tokens": 350,
@@ -31,20 +31,20 @@
 
 ## 🚀 | Execution Result
 
-- `Wall time: 1.25 s`
+- Wall time: 1.25 s
 ```json
 {
-    "compressed_prompt": "You are a question answering bot who uses the provided 
-                       context to answer a question
-                       \n
-                       In this short will explore how Face be deployed in a 
-                       Docker Container and a service...
-                       What's the purpose of the tutorial?",
+    "compressed_prompt": "You are a question answering bot who uses the provided\n"
+                         "context to answer a question\n"
+                         "In this short will explore how Face be deployed in a\n"
+                         "Docker Container and a service...\n"
+                         "What's the purpose of the tutorial?",
     "compressed_tokens": 788,
     "origin_tokens": 2171,
     "ratio": "2.8x",
     "saving": "Saving $0.1 in GPT-4."
- }
+}
+
 ```
 
 ## 🔗 | Links
