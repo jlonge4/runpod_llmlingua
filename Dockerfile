@@ -1,30 +1,29 @@
 # Base image -> https://github.com/runpod/containers/blob/main/official-templates/base/Dockerfile
 # DockerHub -> https://hub.docker.com/r/runpod/base/tags
-FROM runpod/base:0.4.0-cuda11.8.0
+# Builder image ->
+FROM python:3.11-slim-buster as builder
 
-# The base image comes with many system dependencies pre-installed to help you get started quickly.
-# Please refer to the base image's Dockerfile for more information before adding additional dependencies.
-# IMPORTANT: The base image overrides the default huggingface cache location.
+ARG WRK_DIR=/app
+WORKDIR ${WRK_DIR}
 
-
-# --- Optional: System dependencies ---
-# COPY builder/setup.sh /setup.sh
-# RUN /bin/bash /setup.sh && \
-#     rm /setup.sh
-
-
-# Python dependencies
+# Copy dependencies and download model script
 COPY builder/requirements.txt /requirements.txt
 COPY /builder/download_model.py /download_model.py
-RUN python3.11 -m pip install --upgrade pip && \
-    python3.11 -m pip install --upgrade -r /requirements.txt --no-cache-dir && \ 
-    rm /requirements.txt
+
+# Create virtual environment
+ENV VIRTUAL_ENV=/${WRK_DIR}
+RUN python3.11 -m venv ${WRK_DIR}
+ENV PATH="${WRK_DIR}/bin:$PATH"
+ENV UV_HTTP_TIMEOUT=600
+
+# Install dependencies
+RUN python3.11 -m pip install uv && python3.11 -m uv pip install --no-cache-dir -r /requirements.txt 
 RUN python3.11 /download_model.py
-# NOTE: The base image comes with multiple Python versions pre-installed.
-#       It is reccommended to specify the version of Python when running your code.
 
-
-# Add src files (Worker Template)
+# Final image ->
+FROM runpod/base:0.4.0-cuda11.8.0
+COPY --from=builder /app/models/phi2/ /models/phi2/
+COPY --from=builder /app/lib/python3.11/site-packages/ ./
 ADD src .
 
 CMD python3.11 -u /handler.py
