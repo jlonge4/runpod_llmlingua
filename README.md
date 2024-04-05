@@ -2,7 +2,7 @@
 
 <h1>LLMLingua Prompt Compression | RunPod</h1>
 
-🚀 | A custom RunPod Endpoint API worker that employs LLMlingua x Microsoft Phi-2 for prompt compression in seconds.
+🚀 | A custom RunPod Serverless Endpoint template that employs LLMlingua x Microsoft Phi-2 for prompt compression in seconds.
 </div>
 
 ## 📖 | Getting Started
